@@ -1,14 +1,22 @@
 namespace DesafioPOO.Models
 {
+    using System;
+    using System.Collections.Generic;
+
     public abstract class Smartphone
     {
         public string Numero { get; set; }
-        // TODO: Implementar as propriedades faltantes de acordo com o diagrama
+        public string Modelo { get; set; }
+        public string Imei { get; set; }
+        public List<string> AplicativosInstalados { get; private set; }
 
-        public Smartphone(string numero)
+        public Smartphone(string numero, string modelo = "", string imei = "")
         {
+            if (string.IsNullOrWhiteSpace(numero)) throw new ArgumentException("Numero não pode ser nulo ou vazio.", nameof(numero));
             Numero = numero;
-            // TODO: Passar os parâmetros do construtor para as propriedades
+            Modelo = modelo;
+            Imei = imei;
+            AplicativosInstalados = new List<string>();
         }
 
         public void Ligar()
